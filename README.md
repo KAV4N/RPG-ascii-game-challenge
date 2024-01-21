@@ -13,6 +13,16 @@
     <li><strong>Character Movement:</strong> Move your character within the ASCII world, discovering new locations and challenges.</li>
 </ul>
 
+<h3>Controls:</h3>
+<p>Use the arrow keys for character movement:</p>
+<ul>
+    <li><strong>Up Arrow:</strong> Move Up</li>
+    <li><strong>Down Arrow:</strong> Move Down</li>
+    <li><strong>Left Arrow:</strong> Move Left</li>
+    <li><strong>Right Arrow:</strong> Move Right</li>
+    <li><strong>Press 'F' to Exit:</strong> Exit the game</li>
+</ul>
+
 <h3>How to Run:</h3>
 <p>To run the game, open a command prompt or terminal window in the project directory and type the following command:</p>
 <code>python main.py</code>
