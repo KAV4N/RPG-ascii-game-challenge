@@ -4,9 +4,13 @@ class Tile:
     def __init__(self,hitPoints = 1,xyPoz = (0,0)):
         self.hitPoints = hitPoints
         self.id = 0
-        self.fgColor = FgColor.lightcyan
+        self.mainColor = FgColor.lightcyan
+        self.fgColor = FgColor.black
         self.tile = ""
         self.xyPoz = xyPoz
+        self.stepped = False
+        self.lineOfSight = False
+        self.trapsEnabled = False
 
     def decrementHitPoints(self, val=1):
         destroyed = False
@@ -42,3 +46,29 @@ class Tile:
 
     def getTileFgColor(self):
         return self.fgColor
+
+    def action(self,*args,**kwargs):
+        return None
+
+    def isStepped(self):
+        return self.stepped
+
+    def setStepped(self, stepped):
+        self.stepped = stepped
+
+    def setLineOfSight(self,los):
+        self.lineOfSight = los
+        if self.lineOfSight:
+            self.fgColor = self.mainColor
+        else:
+            self.fgColor = FgColor.black
+
+    def nightTime(self):
+        self.trapsEnabled = True
+
+    def dayTime(self):
+        self.trapsEnabled = False
+
+
+    def getLineOfSight(self):
+        return self.lineOfSight

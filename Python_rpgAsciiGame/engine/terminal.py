@@ -14,13 +14,17 @@ class Terminal(threading.Thread):
         self.worldMap = self.world.getWorld()
         self.FPS = 1000/FPS
         self.isOpen = False
+        self.dayTime = True
+        self.testData = ()
+
 
     def run(self):
         self.isOpen = True
+        self.worldMap
         if self.world:
             while self.isOpen:
                 self.refresh()
-                if keyboard.is_pressed("f"):
+                if keyboard.is_pressed("q") or keyboard.is_pressed("Q"):
                     self.closeTerminal()
                 time.sleep(self.FPS/1000)
 
@@ -31,16 +35,14 @@ class Terminal(threading.Thread):
 
     def showFrame(self):
         xStartPoz, yStartPoz, xEndPoz, yEndPoz = self.camera.moveCamera(self.world.getXSize(), self.world.getYSize())
-        for line in self.worldMap[yStartPoz:yEndPoz]:
-            for tile in line[xStartPoz:xEndPoz]:
+        for line in self.worldMap.get(yStartPoz, yEndPoz):
+            for tile in line.get(xStartPoz,xEndPoz):
                 print(tile.getTileFgColor(), tile.getTileChar(), end="")
             print(Colors.reset)
+        print(self.testData)
 
     def move_cursor(self, x,y):
         print(f"\033[{y};{x}H", end="")
-
-    def addToBuffer(self,data=[]):
-        self.buffer.append(data)
 
     def setFPS(self,FPS):
         self.FPS = 1000/FPS
@@ -50,3 +52,6 @@ class Terminal(threading.Thread):
 
     def getWorldMap(self):
         return self.worldMap
+
+    def getWorldSize(self):
+        return self.world.getXSize(), self.world.getYSize()

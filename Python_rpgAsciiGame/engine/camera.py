@@ -6,23 +6,30 @@ class Camera:
 
         self.xViewFromCenter = int((self.xView - 1) / 2)
         self.yViewFromCenter = int((self.yView - 1) / 2)
-
         self.focusOn = focusOn
+
+        self.xStartPoz = 0
+        self.yStartPoz = 0
+        self.xEndPoz = 0
+        self.yEndPoz = 0
 
     def moveCamera(self, yWorldLen, xWorldLen):
         playerPoz = self.focusOn.getTilePoz()
 
-        yStartPoz = max(0, playerPoz[1] - self.getYViewFromCenter())
-        yEndPoz = min(yWorldLen, yStartPoz + self.getYView())
+        self.yStartPoz = max(0, playerPoz[1] - self.getYViewFromCenter())
+        self.yEndPoz = min(yWorldLen, self.yStartPoz + self.getYView())
 
-        xStartPoz = max(0, playerPoz[0] - self.getXViewFromCenter())
-        xEndPoz = min(xWorldLen, xStartPoz + self.getXView())
+        self.xStartPoz = max(0, playerPoz[0] - self.getXViewFromCenter())
+        self.xEndPoz = min(xWorldLen, self.xStartPoz + self.getXView())
 
-        if yEndPoz == yWorldLen:
-            yStartPoz = max(0, yWorldLen - self.getYView())
-        if xEndPoz == xWorldLen:
-            xStartPoz = max(0, xWorldLen - self.getXView())
-        return xStartPoz, yStartPoz,xEndPoz,yEndPoz
+        if self.yEndPoz == yWorldLen:
+            self.yStartPoz = max(0, yWorldLen - self.getYView())
+        if self.xEndPoz == xWorldLen:
+            self.xStartPoz = max(0, xWorldLen - self.getXView())
+        return self.xStartPoz, self.yStartPoz,self.xEndPoz,self.yEndPoz
+
+    def getCurPozition(self):
+        return self.xStartPoz, self.yStartPoz,self.xEndPoz,self.yEndPoz
 
     def getXViewFromCenter(self):
         return self.xViewFromCenter
