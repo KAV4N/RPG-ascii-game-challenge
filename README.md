@@ -20,7 +20,8 @@
     <li><strong>Down Arrow:</strong> Move Down</li>
     <li><strong>Left Arrow:</strong> Move Left</li>
     <li><strong>Right Arrow:</strong> Move Right</li>
-    <li><strong>Press 'F' to Exit:</strong> Exit the game</li>
+    <li><strong>Press 'F' to use Weapon:</strong> Uses the selected Weapon</li>
+    <li><strong>Press 'Q' to Exit:</strong> Exit the game</li>
 </ul>
 
 <h3>How to Run:</h3>
