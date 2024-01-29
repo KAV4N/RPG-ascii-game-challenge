@@ -34,7 +34,7 @@
 
 <h3>Future Improvements:</h3>
 <ul>
-    <li><strong>Quests and Objectives:</strong> Implement quests and objectives to give players a purpose and direction in the game.</li>
+    <li><strong>Quests and Objectives:</strong> Implement quests and objectives to give players a purpose and direction in the game. (For now the current objective is not to get blocked by enemies.)</li>
 </ul>
 
 <h2>Next Steps</h2>
